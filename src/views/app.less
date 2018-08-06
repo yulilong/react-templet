@@ -1,0 +1,29 @@
+@import "./../style/common.less";
+html, body, #app {
+  height: 100%;
+}
+// 页面的整体布局： 头部
+.layout {
+  min-height: 100%; // 如果页面内容不足一屏是用到
+  display: flex;
+  flex-direction: column;
+  // background-color: #f1f2f3;
+  .header {
+    position: fixed;
+    min-width: @page-min-width;
+    width: 100%;
+    top: 0;
+    z-index: 1000;  // 确保头部导航在最上面
+  }
+  .content {
+    min-width: @page-min-width;
+    max-width: @page-max-width;
+    width: 100%;
+    margin: 0 auto;
+    flex: 1;
+    margin-top: 64px; // 头部导航高度
+  }
+  .footer {
+    
+  }
+}
