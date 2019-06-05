@@ -4,38 +4,44 @@ const webpack = require('webpack')
 const merge = require('webpack-merge')
 const webpackConfigBase = require('./webpack.base.config')
 const OpenBrowserPlugin = require('open-browser-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const PORT = 3000
 function resolve(relatedPath) {
-  return path.join(__dirname, relatedPath)
+    return path.join(__dirname, relatedPath)
 }
 const webpackConfigDev = {
-  plugins: [
-    // 定义环境变量为开发环境
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('development'),
-      IS_DEVELOPMETN: true,
-    }),
-    new OpenBrowserPlugin({
-      url: `http://localhost:${PORT}/`,
-    }),
-    // 由于本地开发需要index.html文件，所以在开发环境单独生成了一个index.html文件
-    new HtmlWebpackPlugin({
-      template: resolve('../src/index.html'),
-      filename: 'index.html',
-      favicon: "./src/favicon.ico",
-      chunks: ['index', 'common'],  // common: CommonsChunkPlugin插件提取的公共JS
-    }),
-  ],
-  devtool: 'source-map',
-  devServer: {
-    contentBase: resolve('../src'),
-    historyApiFallback: false,
-    hot: false,
-    host: 'localhost',
-    port: PORT,
-  },
+    plugins: [
+        // 定义环境变量为开发环境
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify('development'),
+            IS_DEVELOPMETN: true,
+        }),
+        // 在浏览器中打开webpack启动服务后的链接选项
+        new OpenBrowserPlugin({
+            url: `http://localhost:${PORT}/`,
+        }),
+    ],
+    devtool: 'source-map',
+    // 本地启动服务选项
+    devServer: {
+        contentBase: resolve('../src'),
+        historyApiFallback: false,
+        hot: false,
+        host: 'localhost',
+        port: PORT,
+        // 如果开发需要使用代理，那么打开下面的注释
+        // proxy: {
+        //     '/apiwwww': {
+        //         target: 'http://wwww.baidu.com',
+        //         pathRewrite: { '^/apiwwww': '' },
+        //         headers: {
+        //             'Proxy-Target': 'http://localhost:',
+        //         },
+        //         changeOrigin: true,     // target是域名的话，需要这个参数，
+        //         secure: false,          // 设置支持https协议的代理
+        //     },
+        // },
+    },
 }
 
 module.exports = merge(webpackConfigBase, webpackConfigDev)
