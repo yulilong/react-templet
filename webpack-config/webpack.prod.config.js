@@ -16,15 +16,12 @@ function resolve(relatedPath) {
 }
 const webpackConfigProd = {
     plugins: [
-        // 定义环境变量为开发环境
+        // 定义环境变量为生产环境， 代码中使用： process.env.NODE_ENV === 'production' 来判断
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production'),
             IS_DEVELOPMETN: false,
         }),
-        // 提取css
-        // 根据入口文件，提取重复引用的公共代码类库，打包到单独文件中
-        // new webpack.optimize.OccurenceOrderPlugin(),
-        /* 压缩优化代码开始*/
+        // 压缩优化代码
         new webpack.optimize.UglifyJsPlugin({ minimize: true }),
         // 自动清理dist目录, root: process.cwd()不能少，否则不能清理
         new CleanWebpackPlugin(

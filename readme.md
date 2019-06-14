@@ -1,6 +1,9 @@
 ## 项目介绍
 
-这个项目是基于webpack的react项目的空框架，路由使用了react-router。     
+这个项目是基于webpack构建的react项目的空框架，路由使用了react-router。     
+
+webpack版本：3.10.0，react版本：16.4.1，react-router版本:：3.2.0
+
 本人使用这个项目做了好几个实际网站，效果还不错。
 
 文件的样式是用LESS，如果想用SCSS，那么在webpack配置文件打开对应功能。
@@ -51,6 +54,6 @@ src/assets/images/.gitkeep，src/components/.gitkeep是为了git能提交空目�
 
 ## 生成的项目注意
 
-2. 打包后，生成的索引HTML文件是`index.html`，如果需要特别的名字，那么需要删除webpack.base.config.js文件中ExtractTextPlugin插件，分别在webpack.dev.config.js指定本地开发的入口文件名(index.html)，在webpack.prod.config.js使用ExtractTextPlugin插件指定名字
+2. 打包后，生成的索引HTML文件是`index.html`，如果需要特别的名字，那么需要删除webpack.base.config.js文件中的ExtractTextPlugin插件，在webpack.dev.config.js中使用ExtractTextPlugin插件指定本地开发的入口文件名(index.html)，在webpack.prod.config.js中使用ExtractTextPlugin插件指定名字入口文件名(main.html)
 3. 本地开发的索引HTML文件`index.html`
 

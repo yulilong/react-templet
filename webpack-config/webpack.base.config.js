@@ -9,15 +9,16 @@ function resolve(relatedPath) {
 }
 const webpackConfigBase = {
     entry: {
-        index: resolve('../src/index.jsx'),     // js入口文件
+        index: resolve('../src/index.jsx'),             // js入口文件
     },
     output: {
-        path: resolve('../output'),             // 项目打包的目录
-        filename: 'js/[name].[hash:4].js',
-        chunkFilename: 'chunks/[name].[hash:4].js',
+        path: resolve('../output'),                     // 项目打包的目录
+        filename: 'js/[name].[hash:4].js',              // 指定的出口JS文件名
+        chunkFilename: 'chunks/[name].[hash:4].js',     // 其他未指定出口名的JS文件名
     },
     resolve: {
         extensions: ['.js', '.json', '.jsx'],
+        // 项目中import时， 路径使用的别名，可以简化引入文件的路径长度
         alias: {
             components: path.join(__dirname, '/../src/components'),
             utils: path.join(__dirname, '/../src/utils'),
@@ -53,7 +54,7 @@ const webpackConfigBase = {
                 })
             },
 
-            // 处理scss样式文件，如果你想用这个那么就打开这里的注释，(安装这个语言的解析包很大太费劲，所以不用就注销或删除)
+            // 处理scss样式文件，如果你想用这个那么就打开这里的注释，(安装这个语言的解析包很大太耗时很久，所以不用就注销或删除)
             // 并且在package.json文件中的devDependencies下面添加两个包：
             // "node-sass": "^4.9.0",
             // "sass-loader": "^7.0.3",
@@ -102,7 +103,7 @@ const webpackConfigBase = {
             },
             disable: false,//禁用插件为false
         }),
-        // 提取公共的组件
+        // 提取公共的组件, 把调用node_modules的文件提取出到单独的JS文件中
         new webpack.optimize.CommonsChunkPlugin({
             name: 'common', // 入口文件名
             filename: 'js/common.bundle.js', // 打包后的文件名,放在js文件夹下

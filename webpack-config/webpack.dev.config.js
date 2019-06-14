@@ -11,7 +11,7 @@ function resolve(relatedPath) {
 }
 const webpackConfigDev = {
     plugins: [
-        // 定义环境变量为开发环境
+        // 定义环境变量为开发环境， 代码中使用： process.env.NODE_ENV === 'development' 来判断
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('development'),
             IS_DEVELOPMETN: true,
