@@ -19,10 +19,13 @@ const webpackConfigBase = {
     resolve: {
         extensions: ['.js', '.json', '.jsx'],
         // 项目中import时， 路径使用的别名，可以简化引入文件的路径长度
+        // 使用：import {exportTag} from '@src/...'
+        // import ShowUser from '@components/b...'
         alias: {
-            components: path.join(__dirname, '/../src/components'),
-            utils: path.join(__dirname, '/../src/utils'),
-            style: path.join(__dirname, '/../src/style'),
+            '@src': path.join(__dirname, '/../src'),
+            '@components': path.join(__dirname, '/../src/components'),
+            '@views': path.join(__dirname, '/../src/views'),
+            '@style': path.join(__dirname, '/../src/style'),
         },
     },
     resolveLoader: {
