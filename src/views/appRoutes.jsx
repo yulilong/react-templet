@@ -1,19 +1,21 @@
-import React from 'react'
-import { Route, IndexRoute }  from 'react-router'
-import Home   from './home/Home'                                // 页面首页组件
-require('./app.less')
-
-
+import React from 'react';
+import { Route, IndexRoute } from 'react-router';
+import Home from './home/Home';
+// 页面首页组件
+require('./app.less');
 
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+
+    };
   }
   
-  componentDidMount () {
+  componentDidMount() {
   }
   
-  render () {
+  render() {
     return (
       <div className="layout">
         <div className="header" id="header">
@@ -41,7 +43,7 @@ const appRoutes = (
     {/* 默认打开就是home */}
     {/* <IndexRoute component={Home} /> */}
     {/* 默认打开'/home'链接 */}
-    <IndexRoute onEnter= { (nextState, replace) => replace('/home') }/>
+    <IndexRoute onEnter={(nextState, replace) => replace('/home')} />
     <Route key="home" path="home" component={Home} />
   </Route>
 );
