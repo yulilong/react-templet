@@ -5,6 +5,7 @@
   "scripts": {
     "start": "webpack-dev-server --config ./webpack-config/webpack.dev.config.js",
     "build": "webpack --config ./webpack-config/webpack.prod.config.js",
+    "analyze": "cross-env ANALYZE=1 npm run build",
     "lint": "eslint ./ --cache --fix --ignore-pattern .gitignore"
   },
   "author": "react_app",
@@ -20,6 +21,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "clean-webpack-plugin": "^0.1.19",
+    "cross-env": "^7.0.2",
     "css-loader": "^3.0.0",
     "eslint": "~4.18.2",
     "eslint-config-airbnb": "~16.1.0",
@@ -43,6 +45,7 @@
     "supervisor": "^0.12.0",
     "url-loader": "~0.6.2",
     "webpack": "~3.10.0",
+    "webpack-bundle-analyzer": "^3.8.0",
     "webpack-dev-server": "~2.11.0",
     "webpack-merge": "^4.1.1"
   },

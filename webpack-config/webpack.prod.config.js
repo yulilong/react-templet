@@ -3,13 +3,9 @@ const webpack = require('webpack')
 const path = require('path')
 const merge = require('webpack-merge')
 const webpackConfigBase = require('./webpack.base.config')
-const CleanWebpackPlugin = require("clean-webpack-plugin");	// 清理dist目录
+// 清理打包生成的目录目录
+const CleanWebpackPlugin = require("clean-webpack-plugin");
 
-// 如果要分析打包后的每个插件的大小，那么安装如下包，并使用
-// "webpack-bundle-analyzer": "^2.9.0",
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-// 分析代码
-// new BundleAnalyzerPlugin({ analyzerPort: 3011 }),
 
 function resolve(relatedPath) {
     return path.join(__dirname, relatedPath)
@@ -23,12 +19,19 @@ const webpackConfigProd = {
         }),
         // 压缩优化代码
         new webpack.optimize.UglifyJsPlugin({ minimize: true }),
-        // 自动清理dist目录, root: process.cwd()不能少，否则不能清理
+        // 自动清理生成的目录, root: process.cwd()不能少，否则不能清理
         new CleanWebpackPlugin(
             [path.join(__dirname, "../output/")],
             { root: process.cwd() }
         ),
     ],
+}
+
+// 分析打包文件大小，用于优化
+// 脚本命令：cross-env ANALYZE=1 npm run build，会注入
+if (process.env.ANALYZE) {
+  const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+  webpackConfigProd.plugins.push(new BundleAnalyzerPlugin({analyzerPort: 8888}));
 }
 
 module.exports = merge(webpackConfigBase, webpackConfigProd)
