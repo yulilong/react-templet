@@ -23,7 +23,9 @@ const webpackConfigBase = {
         // import ShowUser from '@components/b...'
         alias: {
             '@src': path.join(__dirname, '/../src'),
+            '@common': path.join(__dirname, '/../src/common'),
             '@components': path.join(__dirname, '/../src/components'),
+            '@model': path.join(__dirname, '/../src/model'),
             '@views': path.join(__dirname, '/../src/views'),
             '@style': path.join(__dirname, '/../src/style'),
         },
