@@ -1,3 +1,5 @@
+[TOC]
+
 ## 项目介绍
 
 这个项目是基于webpack构建的react项目的空框架，路由使用了react-router。     
@@ -25,6 +27,7 @@ src/assets/images/.gitkeep，src/components/.gitkeep是为了git能提交空目�
 │   │   └── images              图片
 │   ├── components              公共组件文件
 │   │   └── base
+│   ├── model                   redux代码存放
 │   ├── favicon.ico             网站ico
 │   ├── index.html              HTML入口文件
 │   ├── index.jsx               js入口文件
