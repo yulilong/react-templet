@@ -82,6 +82,13 @@
     "import/no-named-as-default-member": 0,
     "jsx-a11y/no-static-element-interactions": 0,
     "jsx-a11y/img-has-alt": 0,
+    // 正常写法：<label htmlFor="box">记录：<input id="box" /></label>
+    // 让 <label htmlFor="box">记录：</label> <input id="box" /> 这种写法不报错
+    "jsx-a11y/label-has-for": [ "error", {
+      "required": {
+        "some": [ "nesting", "id"  ] // 嵌套或有ID 都可以
+      }
+  }],
     "no-unused-vars": [
       "warn",
       {
