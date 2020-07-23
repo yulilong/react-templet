@@ -5,6 +5,7 @@
   "scripts": {
     "start": "webpack-dev-server --config ./webpack-config/webpack.dev.config.js",
     "build": "webpack --config ./webpack-config/webpack.prod.config.js",
+    "deploy": "bash deploy.sh",
     "analyze": "cross-env ANALYZE=1 npm run build",
     "lint": "eslint ./ --cache --fix --ignore-pattern .gitignore"
   },
