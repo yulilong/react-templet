@@ -41,6 +41,12 @@ const webpackConfigBase = {
                 loader: 'babel',
                 query: { presets: ['react', 'stage-0'], cacheDirectory: true }
             },
+            // 对web Worker 的支持：https://webpack.docschina.org/loaders/worker-loader/
+            // 需要安装"worker-loader": "^2.0.0"， 如果不用可以删除此包
+            {
+              test: /\.worker\.js$/,
+              use: { loader: 'worker-loader' },
+            },
             {
                 test: /\.css/,
                 loader: ExtractTextPlugin.extract({
