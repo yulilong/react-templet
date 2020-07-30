@@ -5,6 +5,8 @@ const merge = require('webpack-merge')
 const webpackConfigBase = require('./webpack.base.config')
 // 清理打包生成的目录目录
 const CleanWebpackPlugin = require("clean-webpack-plugin");
+// 压缩优化代码, webpack.optimize.UglifyJsPlugin 自带的在压缩 Worker时不支持ES6语法，
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 
 function resolve(relatedPath) {
@@ -18,7 +20,8 @@ const webpackConfigProd = {
             IS_DEVELOPMETN: false,
         }),
         // 压缩优化代码
-        new webpack.optimize.UglifyJsPlugin({ minimize: true }),
+        // new webpack.optimize.UglifyJsPlugin({ minimize: true }),
+        new UglifyJsPlugin(),
         // 自动清理生成的目录, root: process.cwd()不能少，否则不能清理
         new CleanWebpackPlugin(
             [path.join(__dirname, "../output/")],
