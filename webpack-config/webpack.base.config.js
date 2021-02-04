@@ -45,7 +45,21 @@ const webpackConfigBase = {
             // 需要安装"worker-loader": "^2.0.0"， 如果不用可以删除此包
             {
               test: /\.worker\.js$/,
-              use: { loader: 'worker-loader' },
+              use: [
+                {
+                  loader: 'worker-loader',
+                  options: {
+                    inline: true, // 使用内联Blob样式的worker，解决有的不支持网络请求的worker
+                  },
+                },
+                {
+                  // 配置babel，让worker文件里面也能使用ES6语法。
+                  loader: 'babel-loader',
+                  options: {
+                    presets: ['babel-preset-env'],
+                  },
+                },
+              ],
             },
             {
                 test: /\.css/,
