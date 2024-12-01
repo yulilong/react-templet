@@ -1,5 +1,7 @@
 [TOC]
 
+**注意**：这个分支react版本16.4.1固定了，是没有hooks的版本。用到hooks的版本的话需要升级更高级的react版本。
+
 ## 1. 项目介绍
 
 这个项目是基于webpack构建的react项目的空框架，路由使用了react-router。     
