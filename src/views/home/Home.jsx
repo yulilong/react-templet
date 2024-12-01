@@ -1,15 +1,15 @@
+/* eslint-disable no-console */
 import React from 'react';
 import { connect } from 'react-redux';
 import { Button } from 'antd';
 import demoRedux from '@model/demo';
-import Worker from './demo.worker.js';
+import WorkTest from '@components/WorkTest'; // worker 测试组件
 import './home.less';
 
 class Home extends React.Component {
-  constructor(props) {
-    super(props);
-    this.worker = null;
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   componentDidMount() {
     const { dispatch } = this.props;
@@ -17,24 +17,6 @@ class Home extends React.Component {
     dispatch(demoRedux.getAsyncName(true));
   }
 
-  work = (type) => {
-    if (typeof (Worker) !== 'undefined') {
-      if (type === 0) {
-        // this.worker = new Worker('demo.js');
-        // this.worker = new Worker(require.resolve('./demo'));
-        this.worker = new Worker();
-        console.log(this.worker);
-        this.worker.onmessage = function (event) {
-          document.getElementById('result').innerHTML = event.data;
-        };
-      } else {
-        this.worker.terminate();
-        this.worker = null;
-      }
-    } else {
-      alert('抱歉! Web Worker 不支持');
-    }
-  }
 
   render() {
     const { userName, asyncName } = this.props;
@@ -50,14 +32,11 @@ class Home extends React.Component {
           <Button type="danger">Danger</Button>
           <Button type="link">Link</Button>
         </div>
-        <div>
-          <span>计数</span>
-          <span id="result" />
-        </div>
-        {/* <button onClick="work(0)">开始工作</button> */}
-        <button onClick={() => this.work(0)}>开始工作</button>
-        {/* <button onClick="work(1)">停止工作</button> */}
-        <button onClick={() => this.work(1)}>停止工作</button>
+
+        <br />
+        {/* worker单独线程测试 */}
+        <WorkTest />
+        <br />
       </div>
     );
   }
