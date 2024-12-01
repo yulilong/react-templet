@@ -1,6 +1,6 @@
 import 'babel-polyfill';
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { Router, hashHistory } from 'react-router';
 import { Provider } from 'react-redux';
 // redux 的 store文件
@@ -15,14 +15,12 @@ import rootRoutes from './views/appRoutes';
 //   />,
 //   document.getElementById('app'),
 // );
-
-ReactDOM.render(
-  <Provider store={store}>
-    <Router
-      history={hashHistory}
-      routes={rootRoutes}
-    />
-  </Provider>
-  ,
-  document.getElementById('app'),
-);
+createRoot(document.getElementById('app'))
+  .render(
+    <Provider store={store}>
+      <Router
+        history={hashHistory}
+        routes={rootRoutes}
+      />
+    </Provider>
+  );

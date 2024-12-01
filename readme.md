@@ -4,7 +4,9 @@
 
 这个项目是基于webpack构建的react项目的空框架，路由使用了react-router。     
 
-webpack版本：3.10.0，react版本：16.4.1，react-router版本:：3.2.0
+webpack版本：3.10.0， react-router版本: 3.2.0
+
+升级了react版本到18：react版本：18.2.0，需要react-dom: 18.2.0 一起配合才能生效。
 
 注意：`"webpack-dev-server": "~2.11.0",`不能升级，如果升级到3.1.11版本，则会导致项目启动失败，应为这个版本需要webpack4.0以上版本。
 
