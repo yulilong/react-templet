@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Button } from 'antd';
 import demoRedux from '@model/demo';
 import WorkTest from '@components/WorkTest'; // worker 测试组件
+import HookTest from './HookTest';
 import './home.less';
 
 class Home extends React.Component {
@@ -26,6 +27,7 @@ class Home extends React.Component {
     return (
       <div className="home">
         <div>
+          <div>antd UI 组件测试</div>
           <Button type="primary">Primary</Button>
           <Button>Default</Button>
           <Button type="dashed">Dashed</Button>
@@ -37,6 +39,9 @@ class Home extends React.Component {
         {/* worker单独线程测试 */}
         <WorkTest />
         <br />
+
+        {/* hooks 测试 */}
+        <HookTest />
       </div>
     );
   }
