@@ -117,6 +117,8 @@ module.exports = {
     'jsx-a11y/anchor-is-valid': 0,
     'react/no-array-index-key': 1,
     'jsx-a11y/click-events-have-key-events': 0,
+    'comma-dangle': 0, // 必须尾随逗号
+    'function-paren-newline': 0, // 在函数括号内执行一致的换行符
     'no-debugger': 'off'
   },
   plugins: [
