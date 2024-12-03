@@ -119,6 +119,7 @@ module.exports = {
     'jsx-a11y/click-events-have-key-events': 0,
     'comma-dangle': 0, // 必须尾随逗号
     'function-paren-newline': 0, // 在函数括号内执行一致的换行符
+    'react/jsx-closing-tag-location': 0, // 结束标记匹配开始的缩进
     'no-debugger': 'off'
   },
   plugins: [
